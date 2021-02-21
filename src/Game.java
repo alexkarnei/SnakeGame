@@ -19,12 +19,12 @@ public class Game extends JPanel implements ActionListener {
     private int[] y = new int[ALL_DOTS];
     private int snakeDots;
     private Timer timer;
-    private Timer timerWall;
     private boolean left = false;
     private boolean right = true;
     private boolean up = false;
     private boolean down = false;
     private boolean inGame = true;
+    private boolean runing = true;
 
     public Game() {
         setBackground(Color.BLACK);
@@ -32,6 +32,22 @@ public class Game extends JPanel implements ActionListener {
         initGame();
         addKeyListener(new KeyListener(this));
         setFocusable(true);
+    }
+
+    public boolean isInGame() {
+        return inGame;
+    }
+
+    public boolean isRuning() {
+        return runing;
+    }
+
+    public void setRuning(boolean runing) {
+        this.runing = runing;
+    }
+
+    public Timer getTimer() {
+        return timer;
     }
 
     public boolean isLeft() {
@@ -84,8 +100,9 @@ public class Game extends JPanel implements ActionListener {
     }
 
     private void createWall() {
-        wallX = new Random().nextInt(10) * SNAKE_DOT_SIZE;
-        wallY = new Random().nextInt(10) * SNAKE_DOT_SIZE;
+        wallX = new Random().nextInt(30) * SNAKE_DOT_SIZE;
+        wallY = new Random().nextInt(30) * SNAKE_DOT_SIZE;
+
     }
 
     public void loadImage() {
@@ -111,7 +128,7 @@ public class Game extends JPanel implements ActionListener {
             String str = new String("Game over!");
             g.setColor(Color.white);
             setBackground(Color.RED);
-            g.drawString(str, 200, SIZE / 2);;
+            g.drawString(str, 200, SIZE / 2);
         }
     }
 

@@ -32,5 +32,14 @@ public class KeyListener extends KeyAdapter {
             game.setUp(true);
             game.setLeft(false);
         }
+        if (key == KeyEvent.VK_SPACE && game.isInGame()) {
+            if (game.isRuning()) {
+                game.getTimer().stop();
+                game.setRuning(false);
+            } else {
+                game.getTimer().start();
+                game.setRuning(true);
+            }
+        }
     }
 }
